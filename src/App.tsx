@@ -525,24 +525,26 @@ Por favor, verifiquem os horários disponíveis!`;
             </div>
           </div>
 
-          {/* Dynamic Services grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <AnimatePresence mode="popLayout">
+          {/* Dynamic Services grid with set min-height to maintain stability */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 min-h-[460px] md:min-h-[500px]">
+            <AnimatePresence mode="popLayout" initial={false}>
               {filteredServices.map(srv => (
                 <motion.div
-                  layout
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.4 }}
                   key={srv.id}
-                  className="bg-gradient-to-br from-brand-card to-[#0d0d0d] border border-brand-beige/5 rounded-[2rem] overflow-hidden p-6 hover:border-brand-gold/20 transition-all duration-300 flex flex-col sm:flex-row gap-6 relative"
+                  layout={typeof window !== 'undefined' && window.innerWidth >= 640 ? "position" : false}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.15, ease: "easeInOut" }}
+                  className="bg-gradient-to-br from-brand-card to-[#0d0d0d] border border-brand-beige/5 rounded-[2rem] overflow-hidden p-5 sm:p-6 hover:border-brand-gold/20 flex flex-col sm:flex-row gap-5 sm:gap-6 relative"
                 >
-                  <div className="w-full sm:w-2/5 h-48 sm:h-auto aspect-[4/3] rounded-2xl overflow-hidden border border-brand-beige/5 bg-brand-dark relative shrink-0">
+                  <div className="w-full sm:w-[150px] md:w-[180px] h-48 sm:h-[150px] md:h-[180px] rounded-2xl overflow-hidden border border-brand-beige/5 bg-brand-dark relative shrink-0">
                     <img 
                       src={srv.image} 
                       alt={srv.title} 
-                      className="w-full h-full object-cover filter brightness-95" 
+                      className="absolute inset-0 w-full h-full object-cover filter brightness-95" 
+                      loading="eager"
+                      referrerPolicy="no-referrer"
                     />
                   </div>
 
