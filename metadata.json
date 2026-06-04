@@ -1,0 +1,6 @@
+{
+  "name": "Pet Shop Landing Page",
+  "description": "Uma Landing Page premium e luxuosa em Dark Mode para serviços de estética e boutique pet, com design bento grid e animações fluidas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
