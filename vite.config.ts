@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+     base: "/pet-shop-modelo/",
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
